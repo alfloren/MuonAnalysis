@@ -49,6 +49,12 @@ NtupleContent::CreateBranches(const std::vector<std::string> & HLTs){
   t1->Branch("probe_isMuMatched", &probe_isMuMatched);
   t1->Branch("probe_isPF", &probe_isPF);
   t1->Branch("probe_isGlobal", &probe_isGlobal);
+  t1->Branch("probe_isSta", &probe_isSta);
+  t1->Branch("probe_isTkMuon", &probe_isTkMuon);
+  t1->Branch("probe_isdSA", &probe_isdSA);
+  t1->Branch("probe_isdGlobal", &probe_isdGlobal);
+  t1->Branch("probe_isCosmic", &probe_isCosmic);
+
 //  t1->Branch("probe_isGood", &probe_isGood);
   t1->Branch("probe_isHighPurity", &probe_isHighPurity);
   t1->Branch("probe_validFraction", &probe_validFraction);
@@ -92,6 +98,9 @@ NtupleContent::ClearBranches(){
   probe_isSoft=false;     probe_isHighPt=false;       probe_isMuMatched=false;
   probe_isPF=false;       probe_isGlobal=false;       probe_isGood=false;
   probe_isHighPurity=false;
+  probe_isSta=false;      probe_isTkMuon=false;
+  probe_isdSA=false;      probe_isdGlobal=false;
+  probe_isCosmic=false;
   probe_validFraction=-99;probe_trkChi2=-99;          probe_positionChi2=-99;
   probe_trkKink=-99;      probe_segmentCompatibility=-99;
   probe_trackerLayers=-99; probe_pixelLayers=-99;     probe_dxy=-99;

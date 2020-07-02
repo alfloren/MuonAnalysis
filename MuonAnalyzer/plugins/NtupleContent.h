@@ -48,6 +48,8 @@ public:
   bool probe_isSoft;     bool probe_isHighPt;    bool probe_isMuMatched;
   bool probe_isPF;       bool probe_isGlobal;    bool probe_isGood;
   bool probe_isHighPurity;
+  bool probe_isSta; bool probe_isTkMuon; bool probe_isdSA; bool probe_isdGlobal;
+  bool probe_isCosmic;
 
   float probe_validFraction; float probe_trkChi2;   float probe_positionChi2; 
   float probe_trkKink;       float probe_segmentCompatibility;

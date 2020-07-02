@@ -52,6 +52,8 @@ inline void FillProbeBranches( const TRK & trk, NtupleContent & nt, bool success
      nt.probe_isHighPt=trk.passed(reco::Muon::CutBasedIdTrkHighPt);
      nt.probe_isPF=trk.isPFMuon();
      nt.probe_isGlobal=trk.isGlobalMuon();
+     nt.probe_isSta=trk.isStandAloneMuon();
+     nt.probe_isTkMuon=trk.isTrackerMuon();
      if ( trk.globalTrack().isNonnull() )
         nt.probe_trkChi2=trk.globalTrack()->normalizedChi2();
      else
@@ -78,11 +80,31 @@ inline void FillProbeBranches( const TRK & trk, NtupleContent & nt, bool success
      nt.probe_isTight=false;        nt.probe_isSoft=false;
      nt.probe_isHighPt=false;       nt.probe_isMuMatched=false;
      nt.probe_isPF=false;           nt.probe_isGlobal=false;
+     nt.probe_isSta=false;       nt.probe_isTkMuon=false;
      nt.probe_validFraction=-99;    nt.probe_trkChi2=-99;
      nt.probe_positionChi2=-99;     nt.probe_trkKink=-99;
      nt. probe_trackerLayers=-99;   nt. probe_pixelLayers=-99;
      nt.probe_dxy=-99;              nt.probe_dz=-99;
   }
+ 
+}
+
+template<typename TRK>
+inline void FillProbeBranchesdSA( const TRK & trk, NtupleContent & nt, bool passdSA){
+  if (passdSA) nt.probe_isdSA=true;
+  else  nt.probe_isdSA=false;
+}
+
+template<typename TRK>
+inline void FillProbeBranchesdgl( const TRK & trk, NtupleContent & nt, bool passdgl){
+  if (passdgl) nt.probe_isdGlobal=true;
+  else  nt.probe_isdGlobal=false;
+}
+
+template<typename TRK>
+inline void FillProbeBranchesCosmic( const TRK & trk, NtupleContent & nt, bool passcosmic){
+  if (passcosmic) nt.probe_isCosmic=true;
+  else  nt.probe_isCosmic=false;
 }
 
 template<typename MUO, typename TRK>

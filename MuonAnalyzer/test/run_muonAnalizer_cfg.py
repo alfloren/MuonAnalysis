@@ -8,13 +8,13 @@ import FWCore.ParameterSet.Config as cms
 
 options = VarParsing('python')
 
-options.register('isFullAOD', False,
+options.register('isFullAOD', True,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Set to True for AOD datatier"
 )
 
-options.register('isMC', False,
+options.register('isMC', True,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,
     "Set to True for MC"
@@ -32,7 +32,7 @@ options.register('reportEvery', 1,
     "Report frequency"
 )
 
-options.register('maxEvts', 100,
+options.register('maxEvts', 2000,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.int,
     "Total evts to process"
@@ -53,12 +53,15 @@ options.register('outputName', '',
 options.parseArguments()
 
 globaltag = '102X_dataRun2_v11' if not options.isMC else '102X_upgrade2018_realistic_v15'
+#'80X_mcRun2_asymptotic_2016_TrancheIV_v6'
 if options._beenSet['globalTag']: globaltag = options.globalTag
 
 
 if options.isFullAOD:
   if options.isMC and len(options.inputs)==0:
-     options.inputs.append('/store/mc/RunIIAutumn18DRPremix/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/AODSIM/102X_upgrade2018_realistic_v15-v1/80002/FF9AF238-78B6-CF48-BC7C-05025D85A45C.root')
+    # options.inputs.append('/store/mc/RunIISummer16DR80Premix/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/AODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext2-v1/60001/664F8E31-33F1-E611-BC77-02163E0137A5.root')
+    # options.inputs.append('/store/mc/RunIIAutumn18DRPremix/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/AODSIM/102X_upgrade2018_realistic_v15-v1/00003/FFA1B3FE-866F-AF47-B847-CBEE3F1FD4FD.root')
+     options.inputs.append('/store/mc/RunIISpring18DR/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/AODSIM/pilot_100X_upgrade2018_realistic_v10_ext1-v1/80000/FECB641A-4118-E811-B5D7-FA163EFF87FE.root')
   elif not options.isMC and len(options.inputs)==0:
      options.inputs.append('/store/data/Run2018C/SingleMuon/AOD/17Sep2018-v1/60004/FB123080-071C-F64D-BAFD-F2F292F7FC64.root')
 else:
